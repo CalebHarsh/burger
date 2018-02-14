@@ -3,26 +3,17 @@ var orm = require("../config/orm.js")
 var burger = {
   //read all values inside database
   selectAll: function () {
-    orm.selectAll("burgers").then(data => {
-      data.forEach(item => {
-        console.log(item)
-      })
-    })
+    return orm.selectAll("burgers")
   },  
   //insert a new value into database
   newBurger: function (newBurg) {
-    orm.insertOne("burgers", "burger_name", newBurg/*variable value for new burger*/)
-      .then(() => orm.selectAll("burgers"))
-      .then(data => {
-        data.forEach(item => {
-          console.log(item)
-        })
-      })
+    return orm.insertOne("burgers", "burger_name", newBurg)
   },
   //update a value into the database
   devour: function(id) {
-    orm.updateOne("burgers", "devoured", true, id/*variable value for id */)
+    return orm.updateOne("burgers", "devoured", true, id)
   }
 }
+// burger.devour(10)
 
 module.exports = burger

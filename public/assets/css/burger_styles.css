@@ -1,0 +1,11 @@
+.plate {
+  width: 100%;
+  height: auto;
+  border: solid 4px black;
+  border-radius: 2em;
+  display: flex; 
+  justify-content: center;
+}
+.plate img {
+  border-radius: 2em;
+}

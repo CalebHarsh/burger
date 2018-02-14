@@ -10,4 +10,5 @@ CREATE TABLE burgers(
   PRIMARY KEY (id)
 );
 
-SELECT * FROM burgers;
+
+

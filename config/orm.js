@@ -17,8 +17,8 @@ var orm = {
       var queryString = "INSERT INTO ?? (??) VALUES (?)"
       connection.query(queryString, [tableSel, colSel, colVal], (err, data) => {
         if (err) throw err;
-        console.log("Value inserted into table")
-        resolve()
+        console.log("Value inserted into table", data.insertId)
+        resolve(data.insertId)
       })
     })
 
@@ -28,7 +28,7 @@ var orm = {
       var queryString = "UPDATE ?? SET ?? = ? WHERE id = ?"
       connection.query(queryString, [tableSel, colSel, colVal, id], (err, data) => {
         if (err) throw err;
-        console.log("Table entry updated")
+        console.log("Table entry updated", data)
         resolve()
       })
     })
