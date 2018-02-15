@@ -2,34 +2,30 @@ var plate_full = false
 
 $(".form-select").on("submit", function (e) {
   e.preventDefault()
-  console.log($("#burger").val())
   if ($("#burger").val() != 0) {
-    var burgerObj = {
-      burger_name: $("#burger").val()
-    }
-    var burgImg = burgerObj.burger_name.toLowerCase().replace(" ", "_") + ".jpg"
-    console.log(burgImg)
-    $.ajax("api/burgers", {
-      type: "POST",
-      data: burgerObj
-    }).then(res => {
-      $(".select").data("id", res)
-      $(".select img").attr("src", "assets/imgs/" + burgImg)
-    })
+    var burger_name = $("#burger").val()
+    $(".select").data("burger", burger_name)
+    var burgImg = burger_name.toLowerCase().replace(" ", "_") + ".jpg"
+    $(".select img").attr("src", "assets/imgs/" + burgImg)
   } else {
     alert("Please Pick a Burger First")
   }
 })
 
 $("#move-plate").on("click", function (e) {
-  var id = $(".select").data("id")
-  if (!plate_full) {
+  if (!plate_full && $(".select img").attr("src") != "assets/imgs/none.jpg") {
     var src = $(".select img").attr("src")
-    $(".eat").data("id", id)
-    $(".eat img").attr("src", src)
-    $(".select img").attr("src", "assets/imgs/none.jpg")
-    $(".select").data("id", null)
-    plate_full = true
+    var burgerObj = {
+      burger_name: $(".select").data("burger")
+    }
+    $.ajax("api/burgers", {
+      type: "POST",
+      data: burgerObj
+    }).then(res => {
+      $(".eat").data("id", res)
+      $(".eat img").attr("src", src)
+      plate_full = true
+    })
   } else {
     alert("Eat everything on your plate first")
   }
