@@ -22,6 +22,7 @@ $("#move-plate").on("click", function (e) {
       type: "POST",
       data: burgerObj
     }).then(res => {
+      $(".select img").attr("src", "assets/imgs/none.jpg")
       $(".eat").data("id", res)
       $(".eat img").attr("src", src)
       plate_full = true
