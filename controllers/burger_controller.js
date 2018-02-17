@@ -7,6 +7,7 @@ router.get("/", (req, res) => {
 })
 
 router.get("/api/burgers", (req, res) => {
+  console.log("Getting burger data")
   burger.selectAll().then(data => {
     res.json(data)
   })
