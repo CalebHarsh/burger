@@ -1,13 +1,19 @@
 var mysql = require("mysql")
+var connection
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Caleb1996",
-  database: "burger_db"
-})
+if (process.argv.JAWSDB_URL) {
+  connection = mysql.createConnection(process.argv.JAWSDB_URL)
+} else {
+  connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "Caleb1996",
+    database: "burger_db"
+  })
+}
 
-connection.connect(function(err) {
+
+connection.connect(function (err) {
   if (err) {
     console.error("error connecting: " + err.stack);
     return;
