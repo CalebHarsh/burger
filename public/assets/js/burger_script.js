@@ -18,7 +18,7 @@ $("#move-plate").on("click", function (e) {
     var burgerObj = {
       burger_name: $(".select").data("burger")
     }
-    $.ajax("api/burgers", {
+    $.ajax("/api/burgers", {
       type: "POST",
       data: burgerObj
     }).then(res => {
@@ -35,7 +35,7 @@ $("#move-plate").on("click", function (e) {
 $("#devoured").on("click", function (e) {
   if (plate_full) {
     var id = $(".eat").data("id")
-    $.ajax("api/burger/" + id, {
+    $.ajax("/api/burger/" + id, {
       type: "PUT"
     }).then(res => {
       $(".eat img").attr("src", "assets/imgs/none.jpg")

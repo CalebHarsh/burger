@@ -6,11 +6,11 @@ router.get("/", (req, res) => {
   res.render("index")
 })
 
-// router.get("/api/burgers", (req, res) => {
-//   burger.selectAll().then(data => {
-//     res.json(data)
-//   })
-// })
+router.get("/api/burgers", (req, res) => {
+  burger.selectAll().then(data => {
+    res.json(data)
+  })
+})
 
 router.post("/api/burgers", (req, res) => {
   burger.newBurger(req.body.burger_name).then(result => {
