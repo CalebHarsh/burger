@@ -11,6 +11,7 @@ router.get("/api/burgers", (req, res) => {
   burger.selectAll().then(data => {
     console.log(data)
     res.json(data)
+    res.redirect("/")
   })
 })
 
@@ -18,6 +19,7 @@ router.post("/api/burgers", (req, res) => {
   burger.newBurger(req.body.burger_name).then(result => {
     console.log("New Burger added", result)
     res.json(result)
+    res.redirect("/")
   })
 })
 
