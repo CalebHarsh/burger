@@ -8,18 +8,19 @@ if (process.argv.JAWSDB_URL) {
     host: "localhost",
     user: "root",
     password: "",
-    database: "burger_db"
+    database: "burger_db",
+    port: 3306
   })
 }
 
 
-// connection.connect(function (err) {
-//   if (err) {
-//     console.error("error connecting: " + err.stack);
-//     return;
-//   }
+connection.connect(function (err) {
+  if (err) {
+    console.error("error connecting: " + err.stack);
+    return;
+  }
 
-//   console.log("connected as id " + connection.threadId);
-// });
+  console.log("connected as id " + connection.threadId);
+});
 
 module.exports = connection
